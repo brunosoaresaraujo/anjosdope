@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjos do Pé | Brand Style Guide</title>
+    <!-- Fonts: Outfit (Geometric Modern Sans) & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary: #4FA3D1; /* primary-500 */
+            --primary-dark: #2F7CA8; /* primary-600 */
+            --primary-light: #A9D3E8; /* primary-100 */
+            
+            /* Secondary Colors */
+            --secondary: #6FBF9F; /* secondary-500 */
+            --secondary-light: #DFF3EA; /* secondary-100 */
+            
+            /* Accent Colors */
+            --accent: #F28C8C; /* accent-500 */
+            --accent-light: #FDE4E4; /* accent-100 */
+            
+            /* Highlight */
+            --highlight: #D4AF37; /* Subtle Gold */
+            
+            /* Neutrals & Surfaces */
+            --bg-page: #F5F7F9; /* neutral-50 */
+            --bg-surface: #FFFFFF; /* neutral-0 */
+            --bg-soft: #EDE3D9; /* surface-cream */
+            
+            --text-main: #1F2937; /* neutral-900 */
+            --text-muted: #6B7280; /* neutral-400 */
+            --text-on-primary: #FFFFFF;
+            
+            /* System */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.04), 0 4px 6px -2px rgba(0,0,0,0.02);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+            --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.15);
+            
+            --container-max: 1240px;
+            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Animations */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes scale-in {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Signature Hero Section */
+        .signature-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            width: 100%;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            filter: brightness(0.8) saturate(0.9);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 24px;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 32px;
+            animation: fade-in-up 1s ease forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 92px);
+            line-height: 1;
+            margin-bottom: 32px;
+            font-weight: 700;
+            animation: fade-in-up 1.2s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-desc {
+            font-size: 20px;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            animation: fade-in-up 1.2s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fade-in-up 1.2s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        /* Dynamic Navigation */
+        .hero-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .hero-nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 40px;
+            box-shadow: var(--shadow-sm);
+        }
+        .hero-nav.scrolled .nav-logo { color: var(--primary-dark); }
+        .hero-nav.scrolled .nav-links a { color: var(--text-main); }
+        .hero-nav.scrolled .nav-links a:hover { color: var(--primary); opacity: 1; }
+        .hero-nav.scrolled .btn-outline-white { 
+            border-color: rgba(0,0,0,0.2); 
+            color: var(--text-main); 
+        }
+        .hero-nav.scrolled .btn-outline-white:hover {
+            background-color: var(--text-main);
+            color: white;
+            border-color: var(--text-main);
+        }
+
+        .nav-logo {
+            font-family: 'Outfit';
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: white; 
+            font-size: 14px; 
+            font-weight: 500; 
+            letter-spacing: 0.05em; 
+            transition: var(--transition); 
+            opacity: 0.9; 
+        }
+        .nav-links a:hover { opacity: 1; color: var(--secondary); }
+
+        /* Utility */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Typography Matrix */
+        .type-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            display: block;
+            font-weight: 700;
+        }
+
+        .h1-mega { font-size: clamp(48px, 8vw, 84px); font-weight: 700; margin-bottom: 24px; }
+        .h1 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 16px; }
+        .h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 12px; }
+        .h3 { font-size: 24px; margin-bottom: 8px; }
+        .body-lg { font-size: 20px; color: var(--text-muted); font-weight: 300; }
+        .body-base { font-size: 16px; font-weight: 400; }
+        .small { font-size: 14px; color: var(--text-muted); }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .color-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .color-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
+
+        .color-preview {
+            height: 140px;
+            width: 100%;
+            position: relative;
+        }
+        .color-preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .color-info {
+            padding: 20px;
+        }
+
+        .color-name { font-weight: 600; font-size: 15px; display: block; margin-bottom: 4px; }
+        .color-hex { font-family: monospace; font-size: 13px; color: var(--text-muted); }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: var(--radius-full);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-decoration: none;
+            gap: 10px;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(125, 155, 153, 0.4);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -8px rgba(125, 155, 153, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-light);
+            color: var(--text-main);
+        }
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(111, 191, 159, 0.4);
+            transform: translateY(-4px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            border-color: rgba(255,255,255,0.4);
+            color: white;
+        }
+        .btn-outline-white:hover {
+            background-color: white;
+            color: var(--text-main);
+            border-color: white;
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 2px solid transparent;
+        }
+        .btn-ghost:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        /* Cards & UI Elements */
+        .card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .card:hover .card-img { transform: scale(1.1); }
+
+        .card-content {
+            padding: 32px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: var(--radius-full);
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Inputs */
+        .form-group {
+            margin-bottom: 32px;
+            max-width: 400px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(0,0,0,0.1);
+            background: var(--bg-surface);
+            font-family: inherit;
+            font-size: 15px;
+            transition: var(--transition);
+            color: var(--text-main);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(125, 155, 153, 0.15);
+            background: #fff;
+        }
+
+        /* Mockup Header */
+        .mockup-header {
+            background: var(--bg-surface);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--radius-full);
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 15px; font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Style Guide Header */
+        .guide-hero {
+            background: linear-gradient(135deg, #f3f0e9 0%, #F9F7F2 100%);
+            padding: 140px 0 100px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 280px);
+            gap: 24px;
+        }
+        .bento-item { border-radius: var(--radius-lg); overflow: hidden; position: relative; box-shadow: var(--shadow-md); transition: var(--transition); }
+        .bento-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .bento-1 { grid-column: span 2; grid-row: span 2; }
+        .bento-2 { grid-column: span 2; }
+        .bento-item img { width:100%; height:100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1); }
+        .bento-item:hover img { transform: scale(1.1); }
+        .bento-overlay { 
+            position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%); 
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; color: white;
+        }
+
+        /* Shadows Display */
+        .shadow-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .shadow-box {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Navigation -->
+    <nav class="hero-nav" id="navbar">
+        <a href="#" class="nav-logo">
+            <iconify-icon icon="solar:star-fall-2-linear" style="color: var(--highlight); font-size: 28px;"></iconify-icon>
+            ANJOS DO PÉ
+        </a>
+        <ul class="nav-links">
+            <li><a href="#colors">Cores</a></li>
+            <li><a href="#typography">Tipografia</a></li>
+            <li><a href="#components">Componentes</a></li>
+            <li><a href="#application">Aplicação</a></li>
+        </ul>
+        <div style="display: flex; gap: 12px;">
+            <button class="btn btn-outline-white" style="padding: 10px 24px; font-size: 13px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Agendar Início</button>
+        </div>
+    </nav>
+
+    <!-- Master Demo Hero -->
+    <section class="signature-hero">
+        <video autoplay muted loop playsinline class="hero-video-bg">
+            <source src="./hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="hero-title" style="font-weight: 500; font-size: clamp(48px, 6vw, 84px); letter-spacing: -0.03em;">A Nova Era do<br>Bem-Estar.</h1>
+            <p class="hero-desc">Elevando o padrão da podologia e estética. Personalização aliada ao conforto de um momento feito exclusivamente para você.</p>
+            <div class="hero-btns">
+                <a href="#application" class="btn btn-primary" style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; padding: 18px 48px;">Ver Sistema</a>
+                <a href="#" class="btn btn-outline-white" style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; padding: 18px 48px;">Explorar</a>
+            </div>
+            <div style="margin-top: 40px; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 14px; opacity: 0; animation: fade-in-up 1.2s ease 0.8s forwards;">
+                <iconify-icon icon="solar:check-circle-linear" style="color: var(--accent); font-size: 20px;"></iconify-icon>
+                <span style="color: rgba(255,255,255,0.8);">Clínica e Estética Integrada</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Header -->
+    <section class="guide-hero" style="border-top: none; padding-top: 100px;">
+        <div class="container text-center">
+            <span class="brand-name">Anjos do Pé • Podologia & Estética</span>
+            <h1 class="h1-mega">Documentação Oficial</h1>
+            <p class="body-lg" style="max-width: 700px; margin: 0 auto;">Explore abaixo os fundamentos, componentes e tokens que compõem a nossa identidade visual premium.</p>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Colors -->
+    <section id="colors">
+        <div class="container">
+            <span class="type-label">01. Colors</span>
+            <h2 class="h2">Paleta Cromática</h2>
+            <p class="small" style="margin-bottom: 40px;">Cores inspiradas na natureza e em tons de pele, promovendo uma sensação de calma e saúde.</p>
+            <div class="color-grid">
+                <!-- Primary -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--primary);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Primary 500</span>
+                        <span class="color-hex">#4FA3D1</span>
+                    </div>
+                </div>
+                <!-- Primary Dark -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--primary-dark);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Primary 600</span>
+                        <span class="color-hex">#2F7CA8</span>
+                    </div>
+                </div>
+                <!-- Secondary -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--secondary);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Secondary 500</span>
+                        <span class="color-hex">#6FBF9F</span>
+                    </div>
+                </div>
+                <!-- Accent -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--accent);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Accent 500</span>
+                        <span class="color-hex">#F28C8C</span>
+                    </div>
+                </div>
+                <!-- Surface -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--bg-soft);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Surface Cream</span>
+                        <span class="color-hex">#EDE3D9</span>
+                    </div>
+                </div>
+                <!-- Neutral 50 -->
+                <div class="color-card">
+                    <div class="color-preview" style="background-color: var(--bg-page);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Neutral 50</span>
+                        <span class="color-hex">#F5F7F9</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography">
+        <div class="container">
+            <span class="type-label">02. Typography</span>
+            <h2 class="h2">Sistemas Tipográficos</h2>
+            <div style="margin-top: 60px;">
+                <div style="margin-bottom: 60px;">
+                    <span class="type-label">Headings - Outfit (Modern Sans)</span>
+                    <h1 class="h1">Transformamos cuidados cotidianos em rituais cosmopolitas de saúde.</h1>
+                    <h2 class="h2" style="font-weight: 400; color: var(--primary-dark);">Onde a precisão encontra o conforto absoluto.</h2>
+                    <h3 class="h3" style="text-transform: uppercase; letter-spacing: 0.1em; color: var(--secondary-dark);">Excelência em Podologia Avançada</h3>
+                </div>
+                <div style="max-width: 800px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div>
+                        <span class="type-label">Body Text - Inter</span>
+                        <p class="body-lg" style="margin-bottom: 24px;">Nossa marca comunica através de espaços generosos e tipografia geométrica, refletindo clareza e profissionalismo.</p>
+                        <p class="body-base">Utilizamos a fonte Outfit para títulos devido à sua estrutura moderna e amigável. Para o corpo do texto, a Inter garante legibilidade máxima e um tom institucional refinado.</p>
+                    </div>
+                    <div>
+                        <span class="type-label">Hierarchy Sample</span>
+                        <div style="border-left: 2px solid var(--secondary); padding-left: 20px;">
+                            <h4 class="h3" style="margin-bottom: 8px;">Nossos Valores</h4>
+                            <p class="small" style="line-height: normal;">Priorizamos a saúde integral dos pés, aliando estética de luxo a tratamentos clínicos rigorosos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components -->
+    <section id="components">
+        <div class="container">
+            <span class="type-label">03. UI Components</span>
+            <h2 class="h2">Elementos de Design</h2>
+            
+            <div style="margin-top: 60px;">
+                <span class="type-label">Botões (Pill Style)</span>
+                <div class="btn-group">
+                    <button class="btn btn-primary">Agendar Consulta <iconify-icon icon="solar:calendar-add-linear" width="20"></iconify-icon></button>
+                    <button class="btn btn-secondary">Nossos Serviços</button>
+                    <button class="btn btn-outline">Explorar Unidades</button>
+                    <button class="btn btn-ghost">Falar Conosco</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+                <div>
+                    <span class="type-label">Inputs & Accessibility</span>
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" placeholder="Como podemos te chamar?">
+                    </div>
+                    <div class="form-group">
+                        <label>Escolha seu Cuidado</label>
+                        <select>
+                            <option>Podologia de Alta Performance</option>
+                            <option>Tratamento de Calosidades</option>
+                            <option>Hidratação Profunda</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <input type="checkbox" id="check" style="width: 20px; height: 20px; accent-color: var(--primary);">
+                        <label for="check" style="margin-bottom: 0;">Li e aceito os termos de privacidade</label>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 0;">
+                    <span class="type-label">Service Cards</span>
+                    <div class="card">
+                        <div class="card-img-wrapper">
+                            <img src="./treatment_detail_premium_1776446059176.png" class="card-img" alt="Tratamento">
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">Dermatologia & Saúde</span>
+                            <h3 class="h3">Terapia de Hidratação</h3>
+                            <p class="small">Recupere a vitalidade da pele com nossos protocolos exclusivos de nutrição celular.</p>
+                            <div style="margin-top: 24px; display: flex; align-items: center; color: var(--primary-dark); font-weight: 600; font-family: 'Outfit'; cursor: pointer; gap: 8px;">
+                                Ver detalhes <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 80px;">
+                <span class="type-label">Shadows & Surfaces</span>
+                <div class="shadow-display">
+                    <div class="shadow-box" style="box-shadow: var(--shadow-sm);">Sombra Suave (Small)</div>
+                    <div class="shadow-box" style="box-shadow: var(--shadow-md);">Elevação Média (Medium)</div>
+                    <div class="shadow-box" style="box-shadow: var(--shadow-lg);">Destaque Profundo (Large)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Example -->
+    <section id="application" style="background: var(--bg-soft);">
+        <div class="container">
+            <span class="type-label">04. Application</span>
+            <h2 class="h2">Amostra de Interface Real</h2>
+            <p class="small" style="margin-bottom: 40px;">Como os elementos se comportam em uma composição de landing page.</p>
+            
+            <nav class="mockup-header">
+                <div style="font-family: 'Outfit'; font-weight: 700; font-size: 20px; color: var(--primary-dark); display: flex; align-items: center; gap: 12px;">
+                    <iconify-icon icon="solar:star-fall-2-linear" style="color: var(--highlight); font-size: 24px;"></iconify-icon>
+                    ANJOS DO PÉ
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Unidades</a></li>
+                    <li><a href="#">Diferenciais</a></li>
+                </ul>
+                <button class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Reservar Agora</button>
+            </nav>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-1">
+                    <img src="./podiatry_hero_premium_1776446036988.png" alt="Hero">
+                    <div class="bento-overlay">
+                        <span class="tag" style="background: white; color: var(--primary-dark);">Exclusivo</span>
+                        <h2 class="h1" style="font-size: 42px; margin-bottom: 12px; line-height: 1;">Saúde que Transparece Sofisticação</h2>
+                        <p class="small" style="color: rgba(255,255,255,0.9); max-width: 400px; margin-bottom: 0;">Redescubra o prazer de caminhar com confiança e leveza em um ambiente projetado para todos os seus sentidos.</p>
+                    </div>
+                </div>
+                <div class="bento-item bento-2" style="background: var(--primary-dark); padding: 50px; color: white; display: flex; flex-direction: column; justify-content: center;">
+                    <iconify-icon icon="solar:shield-check-linear" style="font-size: 48px; margin-bottom: 24px; color: var(--secondary);"></iconify-icon>
+                    <h3 class="h2" style="font-size: 32px; color: white;">Segurança Clínica</h3>
+                    <p class="body-base" style="color: rgba(255,255,255,0.7);">Protocolos de esterilização hospitalar com o conforto de um spa boutique.</p>
+                </div>
+                <div class="bento-item" style="background: white; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div style="font-size: 40px; font-weight: 700; color: var(--primary); margin-bottom: 4px; font-family: 'Outfit';">20+</div>
+                    <div class="small" style="text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Unidades SP</div>
+                </div>
+                <div class="bento-item" style="background: var(--accent); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;">
+                    <iconify-icon icon="solar:leaf-linear" style="font-size: 32px; margin-bottom: 12px;"></iconify-icon>
+                    <div class="small" style="color: white; font-weight: 600;">Produtos 100% Orgânicos</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <button class="btn btn-ghost">Ver todas as seções <iconify-icon icon="solar:double-alt-arrow-down-linear"></iconify-icon></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Guide -->
+    <footer style="padding: 80px 0; text-align: center; background: white; border-top: 1px solid rgba(0,0,0,0.05);">
+        <div class="container">
+            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 24px; color: var(--primary-dark); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <iconify-icon icon="solar:star-fall-2-linear" style="color: var(--highlight);"></iconify-icon>
+                ANJOS DO PÉ
+            </div>
+            <p class="small" style="max-width: 500px; margin: 0 auto 32px;">O sistema de design Anjos do Pé é propriedade intelectual da marca. Use com integridade para manter a consistência visual em todos os pontos de contato.</p>
+            <div class="btn-group" style="justify-content: center;">
+                <iconify-icon icon="solar:instagram-linear" style="font-size: 24px; color: var(--text-muted);"></iconify-icon>
+                <iconify-icon icon="solar:facebook-linear" style="font-size: 24px; color: var(--text-muted);"></iconify-icon>
+                <iconify-icon icon="solar:whatsapp-linear" style="font-size: 24px; color: var(--text-muted);"></iconify-icon>
+            </div>
+            <p class="small" style="margin-top: 48px; opacity: 0.5;">© 2026 Anjos do Pé • Brand Style Guide v1.0 • Modern Health & Beauty</p>
+        </div>
+    </footer>
+
+</body>
+</html>
