@@ -999,6 +999,14 @@ footer {
 .btn-outline-hero {
     border-width: 1.5px;
     padding: 20px 48px;
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+.btn-outline-hero:hover {
+    background-color: #ffffff;
+    color: #0b1118;
+    border-color: #ffffff;
 }
 
 .section-header {
