@@ -587,12 +587,13 @@ h3 {
 .marquee-card {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 28px;
-    padding: 36px;
-    min-width: 400px;
+    padding: 28px;
+    min-width: 320px;
+    max-width: 360px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -613,9 +614,9 @@ h3 {
 }
 
 .m-text {
-    font-size: 16px;
+    font-size: 15px;
     font-style: italic;
-    line-height: 1.7;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.85);
     font-weight: 300;
 }
@@ -670,10 +671,15 @@ h3 {
 @media (max-width: 1024px) {
     .bento-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .bento-wide {
         grid-column: span 1;
+    }
+
+    .bento-wide .bento-list {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1078,4 +1084,248 @@ footer {
 
 .whatsapp-icon-size {
     font-size: 28px;
+}
+
+/* ==========================================
+   Responsividade Mobile: Header & Hero
+   ========================================== */
+
+.mobile-only-link {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 16px 24px;
+    }
+
+    .header.scrolled {
+        padding: 12px 24px;
+    }
+
+    .logo img {
+        height: 38px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1100;
+        padding: 0;
+    }
+
+    .hamburger-line {
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-main);
+        border-radius: 2px;
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    /* Active hamburger animation */
+    .menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+    .menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 360px;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        padding: 80px 32px;
+        transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 1050;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger nav link animations when active */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+
+    .nav-links a {
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        padding: 10px;
+    }
+
+    .mobile-only-link {
+        display: block;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .mobile-menu-btn {
+        width: 100%;
+        padding: 16px 28px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    /* Hero Section Responsive Settings */
+    .hero-section {
+        height: 100dvh;
+        padding: 0 24px;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(32px, 9vw, 48px);
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        font-size: 15px;
+        margin-bottom: 40px;
+        padding: 0;
+        line-height: 1.5;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 290px;
+        margin: 0 auto;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        padding: 14px 28px;
+        font-size: 14px;
+    }
+
+    .btn-outline-hero {
+        padding: 14px 28px;
+    }
+
+    /* Bento Grid Mobile Refinements */
+    .bento-card {
+        padding: 32px 24px;
+        border-radius: 28px;
+    }
+    
+    .bento-wide .bento-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .bento-wide .bento-list {
+        padding-top: 24px;
+        margin-top: 24px;
+        gap: 16px;
+    }
+    
+    .body-overlap {
+        padding: 80px 0;
+    }
+
+    /* Testimonials Mobile Refinements */
+    .testimonials-marquee-section {
+        padding: 80px 0;
+    }
+
+    .testimonials-header {
+        margin-bottom: 40px;
+    }
+
+    .marquee-container {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 20px 24px;
+        gap: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .marquee-container::-webkit-scrollbar {
+        display: none; /* Safari/Chrome */
+    }
+
+    .marquee-lane {
+        animation: none !important;
+        width: auto;
+        gap: 16px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .lane-left {
+        display: none !important;
+    }
+
+    .lane-right .card-duplicate {
+        display: none !important;
+    }
+
+    .marquee-card {
+        min-width: 280px;
+        max-width: 280px;
+        padding: 24px;
+        scroll-snap-align: center;
+        margin-bottom: 0;
+    }
+
+    .marquee-fade-left,
+    .marquee-fade-right {
+        display: none !important;
+    }
 }

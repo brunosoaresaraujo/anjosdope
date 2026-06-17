@@ -24,13 +24,19 @@
         <a href="#" class="logo">
             <img src="assets/img/logo-anjos 1.png" alt="Anjos do Pé">
         </a>
-        <ul class="nav-links">
-            <li><a href="#">Tratamentos</a></li>
-            <li><a href="#">Experiência</a></li>
-            <li><a href="#">A Clínica</a></li>
-            <li><a href="#">Unidades</a></li>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#especialidades">Especialidade</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#sobre-nos">Sobre nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li class="mobile-only-link"><a href="https://wa.me/seu-numero" class="btn btn-primary mobile-menu-btn">Marcar Consulta</a></li>
         </ul>
-        <a href="#" class="btn btn-outline">Marcar Consulta</a>
+        <a href="https://wa.me/seu-numero" class="btn btn-outline header-cta">Marcar Consulta</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </header>
 
     <div class="hero-bg-wrapper">
@@ -56,7 +62,7 @@
         </div>
     </section>
 
-    <section class="body-overlap">
+    <section class="body-overlap" id="especialidades">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Nossas Especialidades</span>
@@ -151,7 +157,7 @@
         </div>
     </section>
 
-    <section class="testimonials-marquee-section">
+    <section class="testimonials-marquee-section" id="depoimentos">
         <div class="marquee-fade-left"></div>
         <div class="marquee-fade-right"></div>
         <div class="container testimonials-header">
@@ -238,7 +244,7 @@
                     </div>
                 </div>
                 <!-- Duplicate for Loop -->
-                <div class="marquee-card">
+                <div class="marquee-card card-duplicate">
                     <div class="m-stars">
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
@@ -256,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="marquee-card">
+                <div class="marquee-card card-duplicate">
                     <div class="m-stars">
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
@@ -274,7 +280,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="marquee-card">
+                <div class="marquee-card card-duplicate">
                     <div class="m-stars">
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
@@ -391,7 +397,7 @@
                     </div>
                 </div>
                 <!-- Duplicate for Loop -->
-                <div class="marquee-card">
+                <div class="marquee-card card-duplicate">
                     <div class="m-stars">
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
@@ -409,7 +415,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="marquee-card">
+                <div class="marquee-card card-duplicate">
                     <div class="m-stars">
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
                         <iconify-icon icon="solar:star-bold"></iconify-icon>
@@ -432,7 +438,7 @@
     </section>
 
     <!-- Professional Testimonials Section (4th Fold) -->
-    <section class="professionals-section">
+    <section class="professionals-section" id="sobre-nos">
         <div class="container">
             <!-- Row 1: Photo Left, Info Right -->
             <div class="prof-row">
@@ -460,7 +466,7 @@
     </section>
 
     <!-- Final CTA Section (5th Fold) -->
-    <section class="final-cta-section">
+    <section class="final-cta-section" id="contato">
         <div class="cta-blob blob-1"></div>
         <div class="cta-blob blob-2"></div>
 
